@@ -6,4 +6,4 @@ class RegisterPerson():
 	pass
 
 admin.site.register(Person)
-#admin.site.register(RequestDB)
+admin.site.register(RequestDB)
