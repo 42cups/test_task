@@ -1,7 +1,7 @@
 # Create your views here.
 from django.views.generic import  ListView
 from models import *
-from forms import ShowBioForm
+#from forms import ShowBioForm
 
 class ShowBio(ListView):
 
