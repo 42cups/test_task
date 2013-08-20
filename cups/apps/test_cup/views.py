@@ -15,7 +15,7 @@ class ShowRequests(ListView):
 	def get_context_data(self, **kwargs):
 		context = super(ShowRequests, self).get_context_data(**kwargs)
 		try:
-			context['object'] = self.model.objects.all().reverse()[:10]
+			context['object'] = self.model.objects.all().order_by('-date')[:10]
 		except IndexError:
 			context['object'] = self.model.objects.all()
 		return context
