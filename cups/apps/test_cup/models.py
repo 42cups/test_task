@@ -17,13 +17,14 @@ class Person(models.Model):
 
 	def __unicode__(self):
 		return '{} {}'.format(self.name,self.last_name)
-#
-# class RequestDB(models.Model):
-# 	date = models.DateTimeField()
-# 	body = models.TextField()
-#
-# 	def __unicode__(self):
-# 		return str(self.pk)
+
+class RequestDB(models.Model):
+	date = models.DateTimeField()
+	body = models.TextField()
+
+	def __unicode__(self):
+		return self.date.strftime("%a, %d %b %Y %H:%M:%S")
+
 #
 # @receiver(post_init,sender = Person)
 # def callback_init(sender, **kwargs):

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Last 10 requests</title>
+</head>
+<body>
+{% for request in object %}
+<li>
+    <ul>
+        {{request}}
+    </ul>
+</li>
+{% endfor %}
+</body>
+</html>

@@ -30,9 +30,10 @@
     <br>
     <div class="row">
       <div class="col-md-6"><p><b>Bio </b>{{ object.bio }}</p></div>
-      <div class="col-md-6"><p><b>other contacts: </b>{{ object.other_contacts }}</p></div>
+      <div class="col-md-6"><p><b>Other contacts: </b>{{ object.other_contacts }}</p></div>
       </div>
 {%endfor%}
+    <a href="{% url 'requests' %}">requests</a>
         </div>
 </body>
 </html>
