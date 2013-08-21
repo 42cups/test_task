@@ -1,7 +1,7 @@
 # Create your views here.
-from django.views.generic import  ListView
+from django.views.generic import  ListView,UpdateView,TemplateView
 from models import *
-#from forms import ShowBioForm
+from forms import ShowBioForm
 
 class ShowBio(ListView):
 
@@ -21,3 +21,15 @@ class ShowRequests(ListView):
 		return context
 
 	template_name = 'last_10.html'
+
+class ShowSettings(TemplateView):
+	template_name = 'settings.html'
+
+class UpdateBio(UpdateView):
+
+	model = Person
+	template_name ='person'
+	template_name = 'change.html'
+	form_class = ShowBioForm
+	success_url = '/'
+

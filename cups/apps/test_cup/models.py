@@ -14,6 +14,8 @@ class Person(models.Model):
 	bio = models.TextField()
 	contacts = models.TextField()
 	other_contacts = models.TextField(blank=True)
+	photo = models.ImageField(blank=True,upload_to='.',null=True,max_length=100)
+
 
 	def __unicode__(self):
 		return '{} {}'.format(self.name,self.last_name)

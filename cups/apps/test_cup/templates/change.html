@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{%block content %}
+      <div class="row">
+            <form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+                    <div class="col-md-6">
+                        <p><b>Name </b> {{ form.name }}</p>
+                        <p><b>Last name </b>{{ form.last_name }}</p>
+                        <p><b>Date of birth </b>{{ form.date_of_birth }}</p>
+                        <p><b>Photo</b></p>
+                    {% if person.photo %}
+                    <img src="{{person.photo.url}}"
+                    width="300" height="400" style="border: 2px solid #000000;">
+                    {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <p><b>Email: </b>{{ form.email }}</p>
+                        <p><b>Jabber: </b>{{ form.jabber }}</p>
+                        <p><b>Skype: </b>{{ form.skype }}</p>
+                        <p><b>Other contacts: <p></b>{{ form.other_contacts }}</p></p>
+                        <p><b>Bio: <p></b>{{ form.bio }}</p></p>
+
+                    </div>
+
+    <br>
+    <div class="row">
+            <div class="col-md-6">
+
+            </div>
+
+            <div class="col-md-6">
+
+            </div>
+    </div><br>
+                <button type="submit" class="btn btn-default">Save</button><a href="/" class="btn btn-default">Cancel</a>
+          </form>
+
+    </div>
+
+
+{%endblock%}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{%block content %}
+<div>
+    {% for i in settings_context %}
+    <p>{{ i }}</p>
+    {% endfor %}
+</div>
+{%endblock%}
