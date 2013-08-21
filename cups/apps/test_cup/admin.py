@@ -3,7 +3,7 @@ from models import *
 
 
 class RegisterPerson():
-	pass
+    pass
 
 admin.site.register(Person)
 admin.site.register(RequestDB)

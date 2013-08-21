@@ -1,0 +1,18 @@
+[
+    {
+        "model":"test_cup.Person",
+        "pk":1,
+        "fields":{
+            "name":"Django",
+            "last_name":"Reinhardt",
+            "date_of_birth":"10-01-1910",
+            "email":"django1910@mail.ru",
+            "jabber":"django_r@khavr.com",
+            "skype":"django1910",
+            "bio":" Reinhardt is often regarded as one of the greatest guitar players of all time and is the first important European jazz musician who made major contributions to the development of the idiom. Using only the index and middle fingers of his left hand on his solos (his third and fourth fingers were paralysed after an injury in a fire), Reinhardt invented an entirely new style of jazz guitar technique (sometimes called 'hot' jazz guitar) that has since become a living musical tradition within French Gypsy culture. With violinist Stéphane Grappelli, he co-founded the Quintette du Hot Club de France, described by critic Thom Jurek as 'one of the most original bands in the history of recorded jazz.' Reinhardt's most popular compositions have become jazz standards, including 'Minor Swing', 'Daphne', 'Belleville', 'Djangology', 'Swing '42', and 'Nuages'.",
+            "contacts":" Liberchies, Pont-à-Celles, Belgium",
+            "other_contacts":"Fontainebleau, France",
+            "photo":""
+        }
+    }
+]

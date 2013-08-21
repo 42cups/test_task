@@ -5,37 +5,37 @@ from django.db import models
 # Create your models here.
 class Person(models.Model):
 
-	name = models.CharField(max_length= 30)
-	last_name = models.CharField(max_length= 30)
-	date_of_birth = models.DateField()
-	email = models.EmailField()
-	jabber = models.EmailField(blank=True)
-	skype = models.CharField(max_length=20,blank=True)
-	bio = models.TextField()
-	contacts = models.TextField()
-	other_contacts = models.TextField(blank=True)
-	photo = models.ImageField(blank=True,upload_to='.',null=True,max_length=100)
+    name = models.CharField(max_length= 30)
+    last_name = models.CharField(max_length= 30)
+    date_of_birth = models.DateField()
+    email = models.EmailField()
+    jabber = models.EmailField(blank=True)
+    skype = models.CharField(max_length=20,blank=True)
+    bio = models.TextField()
+    contacts = models.TextField()
+    other_contacts = models.TextField(blank=True)
+    photo = models.ImageField(blank=True,upload_to='.',null=True,max_length=100)
 
 
-	def __unicode__(self):
-		return '{} {}'.format(self.name,self.last_name)
+    def __unicode__(self):
+        return '{} {}'.format(self.name,self.last_name)
 
 class RequestDB(models.Model):
-	date = models.DateTimeField()
-	body = models.TextField()
+    date = models.DateTimeField()
+    body = models.TextField()
 
-	def __unicode__(self):
-		return self.date.strftime("%a, %d %b %Y %H:%M:%S")
+    def __unicode__(self):
+        return self.date.strftime("%a, %d %b %Y %H:%M:%S")
 
 #
 # @receiver(post_init,sender = Person)
 # def callback_init(sender, **kwargs):
-# 	print ('>>>>>>>>>>>>>>> Created! <<<<<<<<<<<<<<<<')
+#     print ('>>>>>>>>>>>>>>> Created! <<<<<<<<<<<<<<<<')
 #
 # @receiver(post_delete,sender = Person)
 # def callback_delete(sender, **kwargs):
-# 	print ('>>>>>>>>>>>>>>> Deleted! <<<<<<<<<<<<<<<<')
+#     print ('>>>>>>>>>>>>>>> Deleted! <<<<<<<<<<<<<<<<')
 #
 # @receiver(post_save,sender = Person)
 # def callback_change(sender, **kwargs):
-# 	print ('>>>>>>>>>>>>>>> Changed! <<<<<<<<<<<<<<<<')
+#     print ('>>>>>>>>>>>>>>> Changed! <<<<<<<<<<<<<<<<')
