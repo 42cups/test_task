@@ -28,7 +28,6 @@ class ShowSettings(TemplateView):
 class UpdateBio(UpdateView):
 
     model = Person
-    template_name ='person'
     template_name = 'change.html'
     form_class = ShowBioForm
     success_url = '/'

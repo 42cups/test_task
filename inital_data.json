@@ -5,7 +5,7 @@
         "fields":{
             "name":"Django",
             "last_name":"Reinhardt",
-            "date_of_birth":"10-01-1910",
+            "date_of_birth":"1910-01-01",
             "email":"django1910@mail.ru",
             "jabber":"django_r@khavr.com",
             "skype":"django1910",
