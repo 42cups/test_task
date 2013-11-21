@@ -133,7 +133,6 @@ INSTALLED_APPS = (
 	'cups.apps.test_cup',
 	'webtest',
 	'south',
-    'annoying',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

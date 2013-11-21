@@ -14,4 +14,4 @@ class ShowBioForm(forms.ModelForm):
 
     class Meta:
         model = Person
-        exclude = ('contacts',)
+        exclude = ('contacts','photo')

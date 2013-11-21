@@ -11,20 +11,20 @@
             });
 
         });
-</script>
-
+    </script>
 
     <div class="row">
-        <form id='main_form' enctype="multipart/form-data" action="" method="post" >{% csrf_token %}
+        <form id='main_form' enctype="multipart/form-data" action="" method="post">{% csrf_token %}
             <div class="col-md-6">
 
                 <div class=" form-group">
-                        <label class="col-sm-4 control-label" for='name'>
-                            Name
-                        </label>
-                        <div class="col-sm-6">
-                            {{ form.name }}
-                        </div>
+                    <label class="col-sm-4 control-label" for='name'>
+                        Name
+                    </label>
+
+                    <div class="col-sm-6">
+                        <input id='name' class="form-control" type="text" value="{{ person.name }}">
+                    </div>
                 </div>
 
                 <div class=" form-group">
@@ -33,7 +33,7 @@
                     </label>
 
                     <div class="col-sm-6">
-                        {{ form.last_name }}
+                        <input id='last_name' class="form-control" type="text" value="{{ person.last_name }}">
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@
                     </label>
 
                     <div class="col-sm-6">
-                        {{ form.date_of_birth }}
+                        <input id='birth' class="form-control" type="text" value="{{ person.date_of_birth|date:'m/d/Y' }}">
                     </div>
                 </div>
 
@@ -52,79 +52,109 @@
                     <label class="col-sm-4 control-label">Photo</label>
                     {% if person.photo %}
                         <div class="col-sm-6">
-                        {{ form.photo }}
 
-                        <img src="{{ person.photo.url }}"
-                             style="width: 300px;height: 300px" class="img-thumbnail">
+                            <img src="{{ person.photo.url }}"
+                                 style="width: 300px;height: 300px" class="img-thumbnail">
                         </div>
-                    {% endif %}</div>
+                    {% endif %}
+                </div>
 
             </div>
             <div class="col-md-6 form-group">
                 <div class=" form-group">
-                        <label class="col-sm-4 control-label" for='email'>
-                            Email
-                        </label>
-                        <div class="col-sm-6">
-                            {{ form.email }}
-                        </div>
+                    <label class="col-sm-4 control-label" for='email'>
+                        Email
+                    </label>
+
+                    <div class="col-sm-6">
+                        <input id='email' class="form-control" type="email" value="{{ person.email }}">
+                    </div>
                 </div>
 
                 <div class=" form-group">
-                        <label class="col-sm-4 control-label" for='jabber'>
-                            Jabber
-                        </label>
-                        <div class="col-sm-6">
-                            {{ form.jabber }}
-                        </div>
+                    <label class="col-sm-4 control-label" for='jabber'>
+                        Jabber
+                    </label>
+
+                    <div class="col-sm-6">
+                        <input id='jabber' class="form-control" type="text" value="{{ person.jabber }}">
+                    </div>
                 </div>
 
                 <div class=" form-group">
-                        <label class="col-sm-4 control-label" for='skype'>
-                            Skype
-                        </label>
-                        <div class="col-sm-6">
-                            {{ form.skype }}
-                        </div>
+                    <label class="col-sm-4 control-label" for='skype'>
+                        Skype
+                    </label>
+
+                    <div class="col-sm-6">
+                        <input id='skype' class="form-control" type="text" value="{{ person.skype }}">
+                    </div>
                 </div>
 
                 <div class=" form-group">
-                        <label class="col-sm-4 control-label" for='other_contacts'>
-                            Other contacts
-                        </label>
-                        <div class="col-sm-6">
-                            {{ form.other_contacts }}
-                        </div>
+                    <label class="col-sm-4 control-label" for='other_contacts'>
+                        Other contacts
+                    </label>
+
+                    <div class="col-sm-6">
+                        <textarea id='other_contacts' class="form-control" >{{ person.other_contacts }}</textarea>
+                    </div>
                 </div>
 
                 <div class=" form-group">
-                        <label class="col-sm-4 control-label" for='bio'>
-                            Bio
-                        </label>
-                        <div class="col-sm-6">
-                            {{ form.bio }}
-                        </div>
+                    <label class="col-sm-4 control-label" for='bio'>
+                        Bio
+                    </label>
+
+                    <div class="col-sm-6">
+                        <textarea id='bio' class="form-control" >{{ person.bio }}</textarea>
+                    </div>
+
                 </div>
 
             </div>
 
             <br>
-
             <div class="row">
-                <div style="text-align: left" class="col-md-2 col-md-offset-2">
-<button id='submit' type="submit" class="btn btn-default">Save</button>
-            <a href="/" class="btn btn-default">Cancel</a>
 
-                </div>
+{#                <div style="text-align: left" class="col-md-2 col-md-offset-2">#}
+{#                    <button id='submit' type="submit" class="btn btn-default">Save</button>#}
+{##}
+{#                    <a href="/" class="btn btn-default">Cancel</a>#}
+{##}
+{#                </div>#}
+
             </div>
             <br>
 
         </form>
+  <div id='indicator'  class="col-md-2 col-md-offset-2">
+                                        <button id='ajax' class="btn btn-default">Ajax</button>
+
+                </div>
+
 
     </div>
 
-<script type="text/javascript" >
-
-</script>
+    <script type="text/javascript">
+        $("#ajax").click(function () {
+            var name =$('#name').val();
+            var last_name =$('#last_name').val();
+            var birth= $('#birth').val();
+            var email = $('#email').val();
+            var jabber = $('#jabber').val();
+            var skype = $('#skype').val();
+            var bio = $('#bio').val();
+            var other_contacts = $('#other_contacts').val();
+            var pk = {{ person.pk }};
+            var formdata = $('#main_form').serialize();
+            formdata += "&pk=" + encodeURIComponent({{ person.pk }}) +'&name='+name +'&last_name='+last_name+'&date_of_birth='+birth+'&email='+email+'&jabber='+jabber+'&skype='+skype+'&bio='+bio+'&other_contacts='+other_contacts;
+            console.log(formdata);
+            $.ajax({url: '/pull_ajax', type: 'POST', data: formdata});
+            $('input').attr('disabled',true);
+            $('textarea').attr('disabled',true);
+            $('#indicator').html('<p>Changes have been saved</p>')
+        });
+    </script>
 
 {% endblock %}

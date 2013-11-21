@@ -1,7 +1,10 @@
 # Create your views here.
-from django.views.generic import  ListView,UpdateView,TemplateView
+from django.views.generic import  ListView,UpdateView,TemplateView,DetailView
 from models import *
 from forms import ShowBioForm
+import json
+from django.http import HttpResponse
+
 
 class ShowBio(ListView):
 
@@ -25,10 +28,29 @@ class ShowRequests(ListView):
 class ShowSettings(TemplateView):
     template_name = 'settings.html'
 
-class UpdateBio(UpdateView):
+class UpdateBio(DetailView):
 
     model = Person
     template_name = 'change.html'
     form_class = ShowBioForm
-    success_url = '/'
+    # success_url = '#'
+    context_object_name = 'person'
 
+
+def ajax(request):
+    if request.is_ajax() :
+        form = ShowBioForm(request.POST)
+        if form.is_valid():
+            data=form.cleaned_data
+            pk = request.POST['pk']
+            p = Person.objects.filter(pk=pk)
+            print('------------------OK FORM------------------'+'\n',data)
+            f = ShowBioForm(request.POST,instance=p[0])
+            f.save()
+
+            return HttpResponse('ok')
+        else :
+            print('------------------ERROR------------------'+'\n',form.cleaned_data)
+            return HttpResponse('______________NOT VALID_____________')
+    else :
+        return HttpResponse('______________NOT AJAX_____________')
