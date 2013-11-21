@@ -1,6 +1,9 @@
 {% extends "base.html" %}
+{% load edit_link %}
 
 {%block content %}
+
+
 
 <div class="row">
 
@@ -13,7 +16,12 @@
 
     </div>
         {% for object in person %}
+
   <div class="col-md-6">
+                           {% if user.is_authenticated %}
+
+              {% edit_link object  %}
+{% endif %}
       <p><b>Name </b> {{ object.name }}</p>
       <p><b>Last name </b>{{ object.last_name }}</p>
       <p><b>Date of birth </b>{{ object.date_of_birth }}</p>
