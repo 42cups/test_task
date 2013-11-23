@@ -1,6 +1,7 @@
 from django.db import models
-from django.db.models.signals import post_delete, post_save, post_init
+from django.db.models.signals import post_delete, post_save, pre_save
 from django.dispatch import receiver
+from django.contrib.contenttypes.models import ContentType
 
 # Create your models here.
 class Person(models.Model):
@@ -28,14 +29,41 @@ class RequestDB(models.Model):
         return self.date.strftime("%a, %d %b %Y %H:%M:%S")
 
 
-@receiver(post_init,sender = Person)
-def callback_init(sender, **kwargs):
-    print ('>>>>>>>>>>>>>>> Created! <<<<<<<<<<<<<<<<')
+# Create signal processor that, for every model,
+# creates the db entry about the object creation/editing/deletion
 
-@receiver(post_delete,sender = Person)
+
+class LogStorage(models.Model):
+    instance = models.CharField(max_length=100)
+    event = models.CharField(max_length=20)
+    time_stamp = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return '{} {} at {}'.format(self.instance,self.event,self.time_stamp.strftime("%a, %d %b %Y %H:%M:%S"))
+
+
+
+def get_models():
+    m_list = ContentType.objects.filter(app_label='test_cup')
+    base_class =[]
+    for model in m_list:
+            base_class.append(model.model_class())
+    return base_class
+
+
+@receiver(post_delete)
 def callback_delete(sender, **kwargs):
-    print ('>>>>>>>>>>>>>>> Deleted! <<<<<<<<<<<<<<<<')
+        if sender in get_models() and sender!=LogStorage.__module__:
+            LogStorage.objects.create(instance=sender.__name__,event='Delete')
 
-@receiver(post_save,sender = Person)
-def callback_change(sender, **kwargs):
-    print ('>>>>>>>>>>>>>>> Changed! <<<<<<<<<<<<<<<<')
+@receiver(pre_save)
+def callback_create(sender,instance, **kwargs):
+    print LogStorage.__module__
+    if sender in get_models() and sender.__name__!=LogStorage.__name__ and not instance.id:
+        LogStorage.objects.create(instance=sender.__name__,event='Create')
+
+
+@receiver(post_save)
+def callback_change(sender,instance, **kwargs):
+    if sender in get_models() and sender.__name__!=LogStorage.__name__ and instance.id:
+        LogStorage.objects.create(instance=sender.__name__,event='Update')
