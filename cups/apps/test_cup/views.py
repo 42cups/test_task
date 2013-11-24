@@ -1,4 +1,4 @@
-from django.views.generic import  ListView
+from django.views.generic import  ListView, TemplateView
 from models import *
 
 class ShowBio(ListView):
@@ -19,3 +19,5 @@ class ShowRequests(ListView):
             context['object'] = self.model.objects.all()
         return context
 
+class ShowSettings(TemplateView):
+    template_name = 'settings.html'

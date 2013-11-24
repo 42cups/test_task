@@ -29,3 +29,10 @@ class TestCase(WebTest):
         resp = self.app.get(reverse('requests'))
         body = resp.html
         assert body.li
+
+    def test_t4_settings_page_shows_context_procc(self):
+        resp = self.app.get(reverse('settings'))
+        body = resp.html
+
+        assert resp.status == '200 OK'
+        assert body.li
