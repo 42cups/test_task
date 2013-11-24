@@ -14,5 +14,19 @@
             "other_contacts":"Fontainebleau, France",
             "photo":""
         }
-    }
+
+    },
+    {
+         "model":"auth.user",
+         "pk":1,
+         "fields":{
+             "first_name":"Johnny",
+             "last_name":"Walker",
+             "username":"admin",
+             "password":"pbkdf2_sha256$10000$MVkRC1byDnsk$RHAEAEhFwH6vH1nkac3uq+fZBaBh/ehMYd+Mq0h89R8=",
+             "is_staff": 1,
+             "is_active": 1,
+             "is_superuser": 1
+         }
+        }
 ]
