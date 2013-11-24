@@ -15,3 +15,10 @@ class Person(models.Model):
 
         def __unicode__(self):
             return '{} {}'.format(self.name,self.last_name)
+
+class RequestDB(models.Model):
+    date = models.DateTimeField()
+    body = models.TextField()
+
+    def __unicode__(self):
+        return self.date.strftime("%a, %d %b %Y %H:%M:%S")

@@ -7,6 +7,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
      url(r'^$', ShowBio.as_view(), name='main'),
+     url(r'^last_10/$', ShowRequests.as_view(), name='requests'),
+
     # url(r'^cups/', include('cups.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

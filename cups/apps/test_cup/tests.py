@@ -18,7 +18,7 @@ class TestCase(WebTest):
         test that main page has a link to pages with requests
         """
         resp = self.app.get(reverse('main'))
-        go_to_requests = resp.click('requests')
+        go_to_requests = resp.click('Show Requests')
         assert go_to_requests.status == '200 OK'
 
     def test_t3_middleware_req_page_exists(self):
@@ -27,4 +27,5 @@ class TestCase(WebTest):
 
     def test_t3_middleware_req_exists_on_its_page(self):
         resp = self.app.get(reverse('requests'))
-        assert resp.mustcontain('<li>')
+        body = resp.html
+        assert body.li

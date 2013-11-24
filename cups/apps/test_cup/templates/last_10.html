@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{%block content %}
+
+{% for request in object %}
+    <ul>
+        <li>{{request}}</li>
+    </ul>
+
+{% endfor %}
+
+        {%endblock%}
