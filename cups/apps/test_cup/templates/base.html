@@ -1,0 +1,28 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <!--<h1>42 Coffee Cups Test Assignment</h1>-->
+
+    <hr>
+
+    {% block content %}
+
+    {% endblock %}
+    <hr>
+    <!-- default bootstrap <hr> css looks better =)
+    <hr style="border: 1px solid #000000;" >-->
+
+</div>
+</body>
+</html>

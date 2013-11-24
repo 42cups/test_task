@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Info box</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    {% for object in person %}
-        <div>
-            <p><b>Name: </b> {{ object.name }}</p>
-            <p><b>Surname: </b>{{ object.last_name }}</p>
-            <p><b>Biography: </b>{{ object.bio }}</p>
-            <p><b>My contacts: </b>{{ object.contacts }}</p>
-        </div>
+{%block content %}
 
-    {% endfor %}
 
-</body>
-</html>
+
+<div class="row">
+        {% for object in person %}
+
+  <div class="col-md-6">
+      <p><b>Name </b> {{ object.name }}</p>
+      <p><b>Last name </b>{{ object.last_name }}</p>
+      <p><b>Date of birth </b>{{ object.date_of_birth }}</p>
+      <p><b>Bio </b>{{ object.bio }}</p>
+  </div>
+  <div class="col-md-6">
+
+      <p><b>Contacts </b>{{ object.contacts }}</p>
+      <p><b>Email: </b>{{ object.email }}</p>
+      <p><b>Jabber: </b>{{ object.jabber }}</p>
+      <p><b>Skype: </b>{{ object.skype }}</p>
+      <p><b>Other contacts: </b>{{ object.other_contacts }}</p>
+       </div>
+    </div>
+
+{%endfor%}
+
+{% endblock %}
