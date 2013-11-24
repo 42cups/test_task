@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
      url(r'^$', ShowBio.as_view(), name='main'),
      url(r'^last_10/$', ShowRequests.as_view(), name='requests'),
+     url(r'^settings$', ShowSettings.as_view(), name='settings'),
 
     # url(r'^cups/', include('cups.foo.urls')),
 
