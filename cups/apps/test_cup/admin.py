@@ -7,3 +7,4 @@ class RegisterPerson():
 
 admin.site.register(Person)
 admin.site.register(RequestDB)
+admin.site.register(LogStorage)
